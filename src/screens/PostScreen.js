@@ -2,17 +2,13 @@ import { HeaderTitle } from "@react-navigation/stack";
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-export const PostScreen = ({  }) => {
+export const PostScreen = ({}) => {
   return (
     <View style={styles.center}>
       <Text>Post Screen</Text>
     </View>
   );
 };
-
-// PostScreen.navigationOptions = {
-//   headerTitle: "Post #42",
-// };
 
 const styles = StyleSheet.create({
   center: {

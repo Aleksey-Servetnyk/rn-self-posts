@@ -29,7 +29,10 @@ export const AppNavigation = () => {
         <Stack.Screen
           name="Post"
           component={PostScreen}
-          options={({ route }) => ({ headerTitle: route.params.name })}
+          options={({ route }) => ({
+            headerTitle: route.params.name,
+            // headerStyle: route.params.headerStyle,
+          })}
         />
       </Stack.Navigator>
     </NavigationContainer>
