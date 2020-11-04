@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Button } from "react-native";
 export const MainScreen = ({ navigation }) => {
   const goToPost = () => {
     //console.log(navigation)
-    navigation.navigate("Post");
+    navigation.navigate("Post", {name: 'Custom Post Header'});
   };
 
   return (
