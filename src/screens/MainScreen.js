@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
+import { Post } from "../components/Post";
 import { DATA } from "../data";
 
 export const MainScreen = ({ navigation }) => {
@@ -19,13 +20,7 @@ export const MainScreen = ({ navigation }) => {
       <FlatList
         data={DATA}
         keyExtractor={(post) => post.id.toString()}
-        renderItem={({ item }) => {
-          return (
-            <View>
-              <Text>{item.text}</Text>
-            </View>
-          );
-        }}
+        renderItem={({ item }) => <Post post={item} />}
       />
     </View>
   );
