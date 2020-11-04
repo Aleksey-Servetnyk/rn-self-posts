@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { AppLoading } from "expo";
 import { bootstrap } from "./src/bootstrap";
+import { AppNavigation } from "./src/navigation/AppNavigation";
 
 export default function App() {
   const [isRedy, setIsRedy] = useState(false);
@@ -17,10 +18,5 @@ export default function App() {
     );
   }
 
-  return (
-    <View>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <AppNavigation />;
 }
