@@ -10,8 +10,16 @@ export const AppNavigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Main" component={MainScreen} />
-        <Stack.Screen name="Post" component={PostScreen} />
+        <Stack.Screen
+          name="Main"
+          component={MainScreen}
+          options={{ headerTitle: "My own blog" }}
+        />
+        <Stack.Screen
+          name="Post"
+          component={PostScreen}
+        //   options={{ headerTitle: "Post #42" }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
