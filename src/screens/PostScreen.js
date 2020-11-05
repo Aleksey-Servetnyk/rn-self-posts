@@ -1,11 +1,12 @@
-import { HeaderTitle } from "@react-navigation/stack";
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-export const PostScreen = ({}) => {
+export const PostScreen = ({ route, navigation }) => {
+  const postId  = route.params.postId;
+  //console.log({ navigation }, { postId }, {route});
   return (
     <View style={styles.center}>
-      <Text>Post Screen</Text>
+      <Text>{postId}</Text>
     </View>
   );
 };
