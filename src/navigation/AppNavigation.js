@@ -74,8 +74,33 @@ function BookedStackScreen() {
         headerTintColor: Platform.OS === "android" ? "#fff" : THEME.MAIN_COLOR,
       }}
     >
-      <BookedNavigator.Screen name="Booked" component={BookedScreen} />
-      <BookedNavigator.Screen name="Post" component={PostScreen} />
+      <BookedNavigator.Screen
+        name="Booked"
+        component={BookedScreen}
+        options={{
+          headerTitle: "Favorites posts",
+          headerLeft: () => (
+            <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+              <Item title="Toggle Drawer" iconName="ios-menu" />
+            </HeaderButtons>
+          ),
+        }}
+      />
+      <BookedNavigator.Screen
+        name="Post"
+        component={PostScreen}
+        options={({ route }) => ({
+          headerTitle: route.params.name,
+          headerRight: () => (
+            <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+              <Item
+                title="Star"
+                iconName={route.params.booked ? "ios-star" : "ios-star-outline"}
+              />
+            </HeaderButtons>
+          ),
+        })}
+      />
     </BookedNavigator.Navigator>
   );
 }
@@ -88,7 +113,6 @@ export const AppNavigation = () => {
           tabBarIcon: ({ color, size }) => {
             let iconName = route.name === "Post" ? "ios-albums" : "ios-star";
             return <Ionicons name={iconName} size={size} color={color} />;
-            initS;
           },
         })}
         tabBarOptions={{
