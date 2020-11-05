@@ -33,38 +33,27 @@ function PostStackScreen() {
           headerTitle: "My own blog",
           headerRight: () => (
             <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-              <Item
-                title="Take photo"
-                iconName="ios-camera"
-                // onPress={() => console.log("Press photo")}
-              />
+              <Item title="Take photo" iconName="ios-camera" />
             </HeaderButtons>
           ),
           headerLeft: () => (
             <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-              <Item
-                title="Toggle Drawer"
-                iconName="ios-menu"
-                // onPress={() => console.log("Press Drawer")}
-              />
+              <Item title="Toggle Drawer" iconName="ios-menu" />
             </HeaderButtons>
           ),
         }}
       />
-      
+
       <PostNavigator.Screen
         name="Post"
         component={PostScreen}
         options={({ route }) => ({
           headerTitle: route.params.name,
-          // headerStyle: route.params.headerStyle,
           headerRight: () => (
-            // console.log(route),
             <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
               <Item
                 title="Star"
                 iconName={route.params.booked ? "ios-star" : "ios-star-outline"}
-                // onPress={() => console.log("Press photo")}
               />
             </HeaderButtons>
           ),
@@ -99,24 +88,18 @@ export const AppNavigation = () => {
           tabBarIcon: ({ color, size }) => {
             let iconName = route.name === "Post" ? "ios-albums" : "ios-star";
             return <Ionicons name={iconName} size={size} color={color} />;
-            initS
+            initS;
           },
         })}
         tabBarOptions={{
           activeTintColor: THEME.MAIN_COLOR,
           inactiveTintColor: "gray",
-          size: 25
+          size: 25,
         }}
       >
-        <BottomNavigator.Screen
-          name="Post"
-          component={PostStackScreen}
-        />
-        
-        <BottomNavigator.Screen
-          name="Booked"
-          component={BookedStackScreen}
-        />
+        <BottomNavigator.Screen name="Post" component={PostStackScreen} />
+
+        <BottomNavigator.Screen name="Booked" component={BookedStackScreen} />
       </BottomNavigator.Navigator>
     </NavigationContainer>
   );
