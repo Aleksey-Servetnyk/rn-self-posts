@@ -5,6 +5,8 @@ import { Platform } from "react-native";
 import { MainScreen } from "../screens/MainScreen";
 import { PostScreen } from "../screens/PostScreen";
 import { THEME } from "../theme";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import { AppHeaderIcon } from "../components/AppHeaderIcons";
 
 const Stack = createStackNavigator();
 
@@ -24,7 +26,18 @@ export const AppNavigation = () => {
         <Stack.Screen
           name="Main"
           component={MainScreen}
-          options={{ headerTitle: "My own blog" }}
+          options={{
+            headerTitle: "My own blog",
+            headerRight: () => (
+              <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+                <Item
+                  title="Take photo"
+                  iconName="ios-camera"
+                  onPress={() => console.log("Press photo")}
+                />
+              </HeaderButtons>
+            ),
+          }}
         />
         <Stack.Screen
           name="Post"
