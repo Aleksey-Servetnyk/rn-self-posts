@@ -16,6 +16,7 @@ export const MainScreen = ({ navigation }) => {
       {
         postId: post.id,
         name: nameHeader,
+        booked: post.booked,
       }
       // headerStyle: {
       //   backgroundColor: "red",

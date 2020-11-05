@@ -33,7 +33,16 @@ export const AppNavigation = () => {
                 <Item
                   title="Take photo"
                   iconName="ios-camera"
-                  onPress={() => console.log("Press photo")}
+                  // onPress={() => console.log("Press photo")}
+                />
+              </HeaderButtons>
+            ),
+            headerLeft: () => (
+              <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+                <Item
+                  title="Toggle Drawer"
+                  iconName="ios-menu"
+                  // onPress={() => console.log("Press Drawer")}
                 />
               </HeaderButtons>
             ),
@@ -42,9 +51,22 @@ export const AppNavigation = () => {
         <Stack.Screen
           name="Post"
           component={PostScreen}
-          options={({ route }) => ({
+          options={({ route }) => (
+            {
             headerTitle: route.params.name,
             // headerStyle: route.params.headerStyle,
+            headerRight: () => (
+              // console.log(route),
+              (
+                <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+                  <Item
+                    title="Star"
+                    iconName={route.params.booked ? "ios-star" : "ios-star-outline"}
+                    // onPress={() => console.log("Press photo")}
+                  />
+                </HeaderButtons>
+              )
+            ),
           })}
         />
       </Stack.Navigator>
