@@ -51,6 +51,7 @@ function PostStackScreen() {
           ),
         }}
       />
+      
       <PostNavigator.Screen
         name="Post"
         component={PostScreen}
@@ -94,27 +95,27 @@ export const AppNavigation = () => {
   return (
     <NavigationContainer>
       <BottomNavigator.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ color, size }) => {
+            let iconName = route.name === "Post" ? "ios-albums" : "ios-star";
+            return <Ionicons name={iconName} size={size} color={color} />;
+            initS
+          },
+        })}
         tabBarOptions={{
           activeTintColor: THEME.MAIN_COLOR,
+          inactiveTintColor: "gray",
+          size: 25
         }}
       >
         <BottomNavigator.Screen
           name="Post"
           component={PostStackScreen}
-          options={{
-            tabBarIcon: (info) => (
-              <Ionicons name="ios-albums" size={25} />
-            ),
-          }}
         />
+        
         <BottomNavigator.Screen
           name="Booked"
           component={BookedStackScreen}
-          options={{
-            tabBarIcon: (info) => (
-              <Ionicons name="ios-star" size={25} />
-            ),
-          }}
         />
       </BottomNavigator.Navigator>
     </NavigationContainer>
