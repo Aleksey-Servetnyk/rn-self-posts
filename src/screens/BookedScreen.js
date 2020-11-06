@@ -1,42 +1,23 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
-import { FlatList } from "react-native-gesture-handler";
-import { Post } from "../components/Post";
+import { PostList } from "../components/PostList";
 import { DATA } from "../data";
 
 export const BookedScreen = ({ navigation }) => {
   const openPostHandler = (post) => {
-    //console.log(navigation)
-
     const nameHeader =
       "Post #" + post.id + " from " + new Date(post.date).toLocaleDateString();
 
-    navigation.navigate(
-      "Post",
-      {
-        postId: post.id,
-        name: nameHeader,
-        booked: post.booked,
-      }
-      // headerStyle: {
-      //   backgroundColor: "red",
-      // },
-    );
+    navigation.navigate("Post", {
+      postId: post.id,
+      name: nameHeader,
+      booked: post.booked,
+    });
   };
 
   return (
-    <View styles={styles.wrapper}>
-      <FlatList
-        data={DATA.filter(post => post.booked)}
-        keyExtractor={(post) => post.id.toString()}
-        renderItem={({ item }) => <Post post={item} onOpen={openPostHandler} />}
-      />
-    </View>
+    <PostList
+      data={DATA.filter((post) => post.booked)}
+      onOpen={openPostHandler}
+    />
   );
 };
-
-const styles = StyleSheet.create({
-  wrapper: {
-    padding: 10,
-  },
-});
