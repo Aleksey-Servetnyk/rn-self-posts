@@ -7,13 +7,13 @@ import {PostScreen} from "../../screens/PostScreen";
 import * as React from "react";
 import {createStackNavigator} from "@react-navigation/stack";
 
-export function PostStackScreen() {
+export function PostStackScreen(navigation) {
 
     const PostNavigator = createStackNavigator();
 
     return (
         <PostNavigator.Navigator
-            screenOptions={{
+            screenOptions ={{
                 headerStyle: {
                     backgroundColor:
                         Platform.OS === "android" ? THEME.MAIN_COLOR : "#fff",
@@ -33,7 +33,10 @@ export function PostStackScreen() {
                     ),
                     headerLeft: () => (
                         <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-                            <Item title="Toggle Drawer" iconName="ios-menu" />
+                            <Item title="Toggle Drawer"
+                                  iconName="ios-menu"
+                                  onPress={() => navigation.toggleDrawer()}
+                            />
                         </HeaderButtons>
                     ),
                 }}

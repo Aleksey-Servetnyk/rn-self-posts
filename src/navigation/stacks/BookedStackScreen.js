@@ -10,7 +10,7 @@ import * as React from "react";
 
 const BookedNavigator = createStackNavigator();
 
-export function BookedStackScreen() {
+export function BookedStackScreen(navigation) {
     return (
         <BookedNavigator.Navigator
             screenOptions={{
@@ -28,7 +28,8 @@ export function BookedStackScreen() {
                     headerTitle: "Favorites posts",
                     headerLeft: () => (
                         <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-                            <Item title="Toggle Drawer" iconName="ios-menu" />
+                            <Item title="Toggle Drawer" iconName="ios-menu"
+                                  onPress={() => navigation.toggleDrawer()} />
                         </HeaderButtons>
                     ),
                 }}
