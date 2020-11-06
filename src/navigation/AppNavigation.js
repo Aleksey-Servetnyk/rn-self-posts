@@ -113,7 +113,7 @@ function BottomNav() {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
           let iconName = route.name === "Post" ? "ios-albums" : "ios-star";
-          return <Ionicons name={iconName} size={size} color={color} />;
+          return <Ionicons name={iconName} size={24} color={color} />;
         },
         tabBarLabel: () => {
           return route.name === "Post" ? "ALL" : "Favorites";
@@ -122,58 +122,45 @@ function BottomNav() {
       tabBarOptions={{
         activeTintColor: THEME.MAIN_COLOR,
         inactiveTintColor: "gray",
+        size: 25,
       }}
     >
       <BottomNavigator.Screen name="Post" component={PostStackScreen} />
       <BottomNavigator.Screen name="Booked" component={BookedStackScreen} />
     </BottomNavigator.Navigator>
   );
-};
+}
 
-const BottomNavAndroid = () => {
+function BottomNavAndroid() {
   return (
     <BottomNavigatorAndroid.Navigator
+      shifting={true}
+      tabBarColor={THEME.MAIN_COLOR}
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ color, size }) => {
+        tabBarIcon: ({ color }) => {
           let iconName = route.name === "Post" ? "ios-albums" : "ios-star";
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-        tabBarLabel: () => {
-          return route.name === "Post" ? "ALL" : "Favorites";
+          return <Ionicons name={iconName} size={24} color={color} />;
         },
       })}
-      tabBarOptions={{
-        activeTintColor: "#fff",
-        inactiveTintColor: "gray",
-      }}
     >
-      <BottomNavigator.Screen name="Post" component={PostStackScreen} />
-      <BottomNavigator.Screen name="Booked" component={BookedStackScreen} />
+      <BottomNavigatorAndroid.Screen
+        name="Post"
+        component={PostStackScreen}
+        options={{ tabBarLabel: "ALL" }}
+      />
+      <BottomNavigatorAndroid.Screen
+        name="Booked"
+        component={BookedStackScreen}
+        options={{ tabBarLabel: "Favorites" }}
+      />
     </BottomNavigatorAndroid.Navigator>
   );
-};
+}
 
 export const AppNavigation = () => {
   return (
     <NavigationContainer>
-    <BottomNavigator.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ color, size }) => {
-          let iconName = route.name === "Post" ? "ios-albums" : "ios-star";
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-        tabBarLabel: () => {
-          return route.name === "Post" ? "ALL" : "Favorites";
-        },
-      })}
-      tabBarOptions={{
-        activeTintColor: THEME.MAIN_COLOR,
-        inactiveTintColor: "gray",
-      }}
-    >
-      <BottomNavigator.Screen name="Post" component={PostStackScreen} />
-      <BottomNavigator.Screen name="Booked" component={BookedStackScreen} />
-    </BottomNavigator.Navigator>      {/* {Platform.OS === "android" ? <BottomNav /> : <BottomNav />} */}
+      {Platform.OS === "android" ? <BottomNavAndroid /> : <BottomNav />}
     </NavigationContainer>
   );
 };
