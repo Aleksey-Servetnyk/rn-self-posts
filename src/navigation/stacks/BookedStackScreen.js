@@ -10,7 +10,7 @@ import * as React from "react";
 
 const BookedNavigator = createStackNavigator();
 
-export function BookedStackScreen(navigation) {
+export function BookedStackScreen({navigation}) {
     return (
         <BookedNavigator.Navigator
             screenOptions={{

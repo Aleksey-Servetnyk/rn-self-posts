@@ -7,7 +7,7 @@ import {PostScreen} from "../../screens/PostScreen";
 import * as React from "react";
 import {createStackNavigator} from "@react-navigation/stack";
 
-export function PostStackScreen(navigation) {
+export function PostStackScreen({navigation}) {
 
     const PostNavigator = createStackNavigator();
 
