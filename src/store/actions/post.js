@@ -1,4 +1,4 @@
-import {LOAD_POSTS} from "../types";
+import {LOAD_POSTS, TOGGLE_BOOKED} from "../types";
 import {DATA} from "../../data";
 
 export const loadPosts = () => {
@@ -7,3 +7,10 @@ export const loadPosts = () => {
         payload: DATA
     }
 }
+export const toggleBooked = (id) => {
+    return {
+        type: TOGGLE_BOOKED,
+        payload: id
+    }
+}
+
