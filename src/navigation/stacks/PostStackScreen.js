@@ -13,7 +13,7 @@ export function PostStackScreen({navigation}) {
 
     return (
         <PostNavigator.Navigator
-            screenOptions ={{
+            screenOptions={{
                 headerStyle: {
                     backgroundColor:
                         Platform.OS === "android" ? THEME.MAIN_COLOR : "#fff",
@@ -28,7 +28,11 @@ export function PostStackScreen({navigation}) {
                     headerTitle: "My own blog",
                     headerRight: () => (
                         <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-                            <Item title="Take photo" iconName="ios-camera" />
+                            <Item
+                                title="Take photo"
+                                iconName="ios-camera"
+                                onPress={() => navigation.navigate('Create')}
+                            />
                         </HeaderButtons>
                     ),
                     headerLeft: () => (
@@ -45,7 +49,7 @@ export function PostStackScreen({navigation}) {
             <PostNavigator.Screen
                 name="Post"
                 component={PostScreen}
-                options={({ route }) => ({
+                options={({route}) => ({
                     headerTitle: route.params.name,
                     headerRight: () => (
                         <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
