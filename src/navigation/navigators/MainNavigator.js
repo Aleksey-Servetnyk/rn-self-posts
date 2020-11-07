@@ -9,9 +9,27 @@ const Drawer = createDrawerNavigator();
 export function MainNavigator() {
     return (
         <Drawer.Navigator>
-            <Drawer.Screen name="PostTabs" component={BottomNavigator} />
-            <Drawer.Screen name="About" component={AboutStackScreen} />
-            <Drawer.Screen name="Create" component={CreateStackScreen} />
+            <Drawer.Screen
+                name="PostTabs"
+                component={BottomNavigator}
+                options={{
+                    drawerLabel: 'Main Page'
+                }}
+            />
+            <Drawer.Screen
+                name="About"
+                component={AboutStackScreen}
+                options={{
+                    drawerLabel: 'About us'
+                }}
+            />
+            <Drawer.Screen
+                name="Create"
+                component={CreateStackScreen}
+                options={{
+                    drawerLabel: 'New Post'
+                }}
+            />
         </Drawer.Navigator>
     )
 }
