@@ -30,7 +30,6 @@ export const PostScreen = ({ route }) => {
       { cancelable: false }
     );
   };
-  //console.log({ navigation }, { postId }, {route});
   return (
     <ScrollView>
       <Image source={{ uri: post.img }} style={styles.image} />

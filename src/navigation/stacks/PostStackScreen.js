@@ -1,15 +1,27 @@
+import React, {useCallback, useEffect} from "react";
 import {Platform} from "react-native";
 import {THEME} from "../../theme";
 import {MainScreen} from "../../screens/MainScreen";
 import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import {AppHeaderIcon} from "../../components/AppHeaderIcons";
 import {PostScreen} from "../../screens/PostScreen";
-import * as React from "react";
 import {createStackNavigator} from "@react-navigation/stack";
+import {useDispatch} from "react-redux";
+import {toggleBooked} from "../../store/actions/post";
 
-export function PostStackScreen({navigation}) {
-
+export function PostStackScreen({navigation, route}) {
+    const postId = () => {
+        navigation.getParameter('postId')
+    }
+    const dispatch = useDispatch()
     const PostNavigator = createStackNavigator();
+    const toggleHandler = useCallback(() => {
+        dispatch(toggleBooked(route.params.id))
+    }, [dispatch, postId])
+
+    useEffect(() => {
+        navigation.setParams({toggleHandler})
+    })
 
     return (
         <PostNavigator.Navigator
@@ -56,6 +68,7 @@ export function PostStackScreen({navigation}) {
                             <Item
                                 title="Star"
                                 iconName={route.params.booked ? "ios-star" : "ios-star-outline"}
+                                onPress={toggleHandler}
                             />
                         </HeaderButtons>
                     ),
