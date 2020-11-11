@@ -7,10 +7,10 @@ import {AppHeaderIcon} from "../../components/AppHeaderIcons";
 import {PostScreen} from "../../screens/PostScreen";
 import * as React from "react";
 
-
-const BookedNavigator = createStackNavigator();
-
 export function BookedStackScreen({navigation}) {
+
+    const BookedNavigator = createStackNavigator();
+
     return (
         <BookedNavigator.Navigator
             screenOptions={{
@@ -29,7 +29,7 @@ export function BookedStackScreen({navigation}) {
                     headerLeft: () => (
                         <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
                             <Item title="Toggle Drawer" iconName="ios-menu"
-                                  onPress={() => navigation.toggleDrawer()} />
+                                  onPress={() => navigation.toggleDrawer()}/>
                         </HeaderButtons>
                     ),
                 }}
@@ -37,13 +37,17 @@ export function BookedStackScreen({navigation}) {
             <BookedNavigator.Screen
                 name="Post"
                 component={PostScreen}
-                options={({ route }) => ({
+                options={({route}) => ({
                     headerTitle: route.params.name,
                     headerRight: () => (
                         <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
                             <Item
                                 title="Star"
                                 iconName={route.params.booked ? "ios-star" : "ios-star-outline"}
+                                onPress={() => {
+                                    route.params.toggleHandler(route.params.postId)
+                                    //console.log('postId: ' + route.params.postId)
+                                }}
                             />
                         </HeaderButtons>
                     ),
