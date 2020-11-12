@@ -1,9 +1,10 @@
 import React, {useState} from "react";
 import {View, Text, StyleSheet, ScrollView, TouchableWithoutFeedback, Keyboard} from "react-native";
-import {TextInput, Button, Image} from "react-native";
+import {TextInput, Button} from "react-native";
 import {THEME} from "../theme";
 import {useDispatch} from "react-redux";
 import {addPost} from "../store/actions/post";
+import {PhotoPicker} from "../components/PhotoPicker";
 
 export const CreateScreen = ({navigation}) => {
     const dispatch = useDispatch()
@@ -31,9 +32,7 @@ export const CreateScreen = ({navigation}) => {
                         onChangeText={setText}
                         multiline
                     />
-                    <Image
-                        style={{width: '100%', height: 200, marginBottom: 10}}
-                        source={{uri: img}}/>
+                    <PhotoPicker/>
                     <Button title={'Create post'} color={THEME.MAIN_COLOR} onPress={saveHandler}/>
                 </View>
             </TouchableWithoutFeedback>

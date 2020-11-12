@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Button, Image, View, Platform} from 'react-native';
+import {Button, Image, View, Platform, StyleSheet} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
 export const PhotoPicker = ({}) => {
@@ -17,15 +17,15 @@ export const PhotoPicker = ({}) => {
     }, [])
 
     const takePhoto = async () => {
-        const img = await ImagePicker.launchCameraAsync({
+        let result = await ImagePicker.launchCameraAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
             allowsEditing: false,
             aspect: [16, 9],
             quality: 1
         })
 
-        console.log(img)
-
+        //console.log(img)
+        setImage(result.uri)
         if (!result.cancelled) {
             setImage(result.uri)
         }
