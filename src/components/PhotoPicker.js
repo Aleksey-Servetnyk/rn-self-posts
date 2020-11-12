@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Button, Image, View, Platform, StyleSheet} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
-export const PhotoPicker = ({}) => {
+export const PhotoPicker = ({onPick}) => {
     const [image, setImage] = useState(null)
 
     useEffect(() => {
@@ -25,10 +25,12 @@ export const PhotoPicker = ({}) => {
         })
 
         //console.log(img)
-        setImage(result.uri)
         if (!result.cancelled) {
             setImage(result.uri)
         }
+
+        setImage(result.uri)
+        onPick(result.uri)
     }
 
 

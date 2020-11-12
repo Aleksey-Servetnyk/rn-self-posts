@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import {View, Text, StyleSheet, ScrollView, TouchableWithoutFeedback, Keyboard} from "react-native";
 import {TextInput, Button} from "react-native";
 import {THEME} from "../theme";
@@ -8,17 +8,20 @@ import {PhotoPicker} from "../components/PhotoPicker";
 
 export const CreateScreen = ({navigation}) => {
     const dispatch = useDispatch()
-    const img = 'https://static.coindesk.com/wp-content/uploads/2019/01/shutterstock_1012724596-860x430.jpg'
     const [text, setText] = useState('')
+    const imgRef = useRef()
     const saveHandler = () => {
         const post = {
             date: new Date().toJSON(),
             text: text,
-            img: img,
+            img: imgRef.current,
             booked: false
         }
         dispatch(addPost(post))
         navigation.navigate('Main')
+    };
+    const photoPickHandler = (uri) => {
+        imgRef.current = uri
     };
     return (
         <ScrollView>
@@ -32,8 +35,13 @@ export const CreateScreen = ({navigation}) => {
                         onChangeText={setText}
                         multiline
                     />
-                    <PhotoPicker/>
-                    <Button title={'Create post'} color={THEME.MAIN_COLOR} onPress={saveHandler}/>
+                    <PhotoPicker onPick={photoPickHandler}/>
+                    <Button
+                        title={'Create post'}
+                        color={THEME.MAIN_COLOR}
+                        onPress={saveHandler}
+                        disabled={!text}
+                    />
                 </View>
             </TouchableWithoutFeedback>
         </ScrollView>
