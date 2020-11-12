@@ -12,22 +12,22 @@ export function BottomNavAndroid() {
         <BottomNavigatorAndroid.Navigator
             shifting={true}
             tabBarColor={THEME.MAIN_COLOR}
-            screenOptions={({ route }) => ({
-                tabBarIcon: ({ color }) => {
+            screenOptions={({route}) => ({
+                tabBarIcon: ({color}) => {
                     let iconName = route.name === "Post" ? "ios-albums" : "ios-star";
-                    return <Ionicons name={iconName} size={24} color={color} />;
+                    return <Ionicons name={iconName} size={24} color={color}/>;
                 },
             })}
         >
             <BottomNavigatorAndroid.Screen
                 name="Post"
                 component={PostStackScreen}
-                options={{ tabBarLabel: "ALL" }}
+                options={{tabBarLabel: "ALL"}}
             />
             <BottomNavigatorAndroid.Screen
                 name="Booked"
                 component={BookedStackScreen}
-                options={{ tabBarLabel: "Favorites" }}
+                options={{tabBarLabel: "Favorites"}}
             />
         </BottomNavigatorAndroid.Navigator>
     );

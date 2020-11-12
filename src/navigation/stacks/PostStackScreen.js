@@ -11,7 +11,6 @@ export function PostStackScreen({navigation}) {
 
     const PostNavigator = createStackNavigator();
 
-
     return (
         <PostNavigator.Navigator
             screenOptions={{
@@ -20,6 +19,7 @@ export function PostStackScreen({navigation}) {
                         Platform.OS === "android" ? THEME.MAIN_COLOR : "#fff",
                 },
                 headerTintColor: Platform.OS === "android" ? "#fff" : THEME.MAIN_COLOR,
+
             }}
         >
             <PostNavigator.Screen
@@ -59,7 +59,6 @@ export function PostStackScreen({navigation}) {
                                 iconName={route.params.booked ? "ios-star" : "ios-star-outline"}
                                 onPress={() => {
                                     route.params.toggleHandler(route.params.postId)
-                                    //console.log('postId: ' + route.params.postId)
                                 }}
                             />
                         </HeaderButtons>

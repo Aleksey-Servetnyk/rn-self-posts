@@ -10,10 +10,10 @@ const BottomNavigator = createBottomTabNavigator();
 export function BottomNav() {
     return (
         <BottomNavigator.Navigator
-            screenOptions={({ route }) => ({
-                tabBarIcon: ({ color }) => {
+            screenOptions={({route}) => ({
+                tabBarIcon: ({color}) => {
                     let iconName = route.name === "Post" ? "ios-albums" : "ios-star";
-                    return <Ionicons name={iconName} size={24} color={color} />;
+                    return <Ionicons name={iconName} size={24} color={color}/>;
                 },
                 tabBarLabel: () => {
                     return route.name === "Post" ? "ALL" : "Favorites";
@@ -25,8 +25,8 @@ export function BottomNav() {
                 size: 25,
             }}
         >
-            <BottomNavigator.Screen name="Post" component={PostStackScreen} />
-            <BottomNavigator.Screen name="Booked" component={BookedStackScreen} />
+            <BottomNavigator.Screen name="Post" component={PostStackScreen}/>
+            <BottomNavigator.Screen name="Booked" component={BookedStackScreen}/>
         </BottomNavigator.Navigator>
     );
 }

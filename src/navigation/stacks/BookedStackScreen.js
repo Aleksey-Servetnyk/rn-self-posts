@@ -40,13 +40,13 @@ export function BookedStackScreen({navigation}) {
                 options={({route}) => ({
                     headerTitle: route.params.name,
                     headerRight: () => (
+
                         <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
                             <Item
                                 title="Star"
                                 iconName={route.params.booked ? "ios-star" : "ios-star-outline"}
                                 onPress={() => {
                                     route.params.toggleHandler(route.params.postId)
-                                    //console.log('postId: ' + route.params.postId)
                                 }}
                             />
                         </HeaderButtons>
