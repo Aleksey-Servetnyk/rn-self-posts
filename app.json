@@ -17,13 +17,16 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.csk.self-blog-rn-app",
+      "buildNumber": "1.1.98"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.salex.rnselfposts"
     },
     "web": {
       "favicon": "./assets/favicon.png"
