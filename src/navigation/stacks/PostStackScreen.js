@@ -56,9 +56,9 @@ export function PostStackScreen({navigation}) {
                         <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
                             <Item
                                 title="Star"
-                                iconName={route.params.booked ? "ios-star" : "ios-star-outline"}
+                                iconName={route.params.post.booked ? "ios-star" : "ios-star-outline"}
                                 onPress={() => {
-                                    route.params.toggleHandler(route.params.postId)
+                                    route.params.toggleHandler(route.params.post.id)
                                 }}
                             />
                         </HeaderButtons>

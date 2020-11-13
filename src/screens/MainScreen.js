@@ -6,19 +6,19 @@ import {loadPosts, toggleBooked} from "../store/actions/post";
 export const MainScreen = ({navigation}) => {
 
     const openPostHandler = (post) => {
-        const postId = post.id
 
         const toggleHandler = () => {
-            dispatch(toggleBooked(postId))
+            dispatch(toggleBooked(post))
         }
 
         const nameHeader =
             "Post #" + post.id + " from " + new Date(post.date).toLocaleDateString();
 
         navigation.navigate("Post", {
+            post: post,
             postId: post.id,
             name: nameHeader,
-            booked: post.booked,
+            //booked: post.booked,
             toggleHandler: toggleHandler
         });
     };
