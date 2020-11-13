@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "rn-self-posts",
+    "name": "Self Blog",
     "slug": "rn-self-posts",
-    "version": "1.0.0",
+    "version": "1.1.98",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/rn-icon.png",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/rn-splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#242832"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
